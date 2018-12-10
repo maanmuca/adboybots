@@ -29,7 +29,7 @@
                 class="white--text"
             >
                 <img src="@/assets/adboy-logo.png" height="150" class="mb-5" alt="">
-                <h1 class="blue--text mb-2 display-1 text-xs-center">Welcome to Adboy Bots Manager system</h1>
+                <h1 class="blue--text mb-2 display-1 text-xs-center">Welcome Marco</h1>
                 <div class="subheading mb-3 text-xs-center">It is nice to meet you!</div>
                     <router-link to="/mydashboard">
                     <v-btn

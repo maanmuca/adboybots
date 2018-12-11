@@ -1,5 +1,6 @@
 <template>
-    <div>  
+    <div> 
+        <v-app> 
         <v-toolbar   flat color="white" >
             <v-avatar
                     tile="tile"
@@ -25,9 +26,10 @@
                     <v-tabs
                     color="#007bff"
                     dark
-                    slider-color="white"
+                    slider-color="#007bff"
+                    hide-slider
                     >
-                    <v-tab :key="1" ripple><v-tooltip bottom><v-icon class="fab fa-facebook-f"  slot="activator"></v-icon><span>Tooltip</span></v-tooltip></v-tab>
+                    <v-tab :key="1" ripple><v-icon class="fab fa-facebook-f"></v-icon></v-tab>
                     <v-tab-item :key="1">
                     <v-layout  row wrap>
                         <v-flex xs6 elevation-0   height="440px">
@@ -42,7 +44,7 @@
                                         <v-divider></v-divider>
                                    
                                         
-                                        <v-list-tile key="index" avatar ripple>
+                                        <v-list-tile key="index0" avatar ripple>
                                             <v-list-tile-content>
                                                 <v-list-tile-title>Dentist in Melbourne</v-list-tile-title> 
                                                 <v-list-tile-sub-title>Best dentist in Melbourne ever!</v-list-tile-sub-title>
@@ -55,10 +57,10 @@
                                             </v-list-tile-action>
                                         </v-list-tile>
                                         <v-divider></v-divider>
-                                        <v-list-tile key="index" avatar ripple>
+                                        <v-list-tile key="index1" avatar ripple>
                                             <v-list-tile-content>
-                                                <v-list-tile-title>Dentist in Melbourne</v-list-tile-title> 
-                                                <v-list-tile-sub-title>Best dentist in Melbourne ever!</v-list-tile-sub-title>
+                                                <v-list-tile-title>Education Review Australia Community</v-list-tile-title> 
+                                                <v-list-tile-sub-title>Education Review Australia Community</v-list-tile-sub-title>
                                             </v-list-tile-content>
                                             <v-list-tile-action>
                                                 <v-badge left color="green">
@@ -107,7 +109,7 @@
                                        <p class="display-1">234</p>
                                 </v-flex>
                                 <v-flex xs12 class="text-xs-center" >
-                                       <v-btn color="info">Edit</v-btn>
+                                       <router-link to="/profilebot"><v-btn color="info">Edit</v-btn></router-link>
                                        <v-btn color="warning">Stop</v-btn>
                                        <v-btn color="error">Delete</v-btn>
                                 </v-flex>
@@ -118,17 +120,22 @@
                         </v-flex>
                     </v-layout>
                     </v-tab-item>
-                    <v-tab :key="2" disabled ripple><v-tooltip bottom><v-icon class="fab fa-skype" slot="activator" ></v-icon><span>Tooltip</span></v-tooltip></v-tab>
+                    <v-tab :key="2" disabled ripple><v-icon class="fab fa-skype"  ></v-icon></v-tab>
                     <v-tab-item :key="2">
-                        <v-card flat>
-                        <v-card-text>GOD</v-card-text>
-                        </v-card>
+                        <v-container grid-list-md text-xs-center>
+                            <v-layout  row wrap>
+                            <v-flex xs12 elevation-0   height="440px">
+                                <p>Stay tuned!</p>
+                                <p><router-link to="/mydashboard"><v-btn color="info">Back</v-btn></router-link></p>
+                            </v-flex>
+                            </v-layout>
+                        </v-container>
                     </v-tab-item>
                     <v-tab :key="3" disabled ripple><v-icon class="fab fa-whatsapp"></v-icon></v-tab>
                     <v-tab-item :key="3">
-                        <v-card flat>
+                        <!-- <v-card flat>
                         <v-card-text>GOD</v-card-text>
-                        </v-card>
+                        </v-card> -->
                     </v-tab-item>
                     </v-tabs>
                 </span>
@@ -136,26 +143,15 @@
            
             </v-layout>
         </v-container>    
+        </v-app>
     </div>
 </template>
 <script>
-import adboyBotsUsersHeader from '@/components/adboyBotsUsersHeader'
  export default {
  name:'adboyBotsDashboard',
- components:{adboyBotsUsersHeader},
  data: () => ({
-     items: [
-        { action: '15 min', headline: 'Brunch this weekend?', title: 'Ali Connors', subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?" },
-        { action: '2 hr', headline: 'Summer BBQ', title: 'me, Scrott, Jennifer', subtitle: "Wish I could come, but I'm out of town this weekend." },
-        { action: '6 hr', headline: 'Oui oui', title: 'Sandra Adams', subtitle: 'Do you have Paris recommendations? Have you ever been?' },
-        { action: '12 hr', headline: 'Birthday gift', title: 'Trevor Hansen', subtitle: 'Have any ideas about what we should get Heidi for her birthday?' },
-        { action: '18hr', headline: 'Recipe to try', title: 'Britta Holt', subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.' },
-        { action: '18hr', headline: 'Recipe to try', title: 'Britta Holt', subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.' },
-        { action: '18hr', headline: 'Recipe to try', title: 'Britta Holt', subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.' },
-        { action: '18hr', headline: 'Recipe to try', title: 'Britta Holt', subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.' },
-        { action: '18hr', headline: 'Recipe to try', title: 'Britta Holt', subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.' },
-        { action: '18hr', headline: 'Recipe to try', title: 'Britta Holt', subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.' },
-      ]
+
+
  })
  
 }

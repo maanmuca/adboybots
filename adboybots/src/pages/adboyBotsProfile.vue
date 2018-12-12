@@ -61,99 +61,27 @@
                         </v-flex>
                         
                     </v-layout>
-                    <v-flex  xs12>
+                    <v-layout class="pt-3">
+                    <v-flex  xs6>
                             <v-textarea
                             label="About Us"
                             value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
                             hint="Hint text"
                             ></v-textarea>
                     </v-flex>
-                    <v-flex  xs12>
-                        <v-expansion-panel>
-                            <v-expansion-panel-content>
-                            <div slot="header" color="black">Opening Hours</div>
-                            <v-card>
-                                <v-layout class="pa-2">
-                                <v-flex xs4 >
-                                    <v-select
-                                    v-model="select"
-                                    :items="openingDays"
-                                    :rules="[v => !!v || 'Item is required']"
-                                    label="Opening Days"
-                                    required
-                                    ></v-select>
-                                </v-flex>
-                                    
-                                <v-flex xs4 >
-                                    <v-dialog
-                                        ref="dialog"
-                                        v-model="modal2"
-                                        :return-value.sync="time"
-                                        persistent
-                                        lazy
-                                        full-width
-                                        width="290px"
-                                    >
-                                        <v-text-field
-                                        slot="activator"
-                                        v-model="time"
-                                        label="Opening"
-                                        prepend-icon="access_time"
-                                        readonly
-                                        ></v-text-field>
-                                        <v-time-picker
-                                        v-if="modal2"
-                                        v-model="time"
-                                        full-width
-                                        >
-                                        <v-spacer></v-spacer>
-                                        <v-btn flat color="primary" @click="modal2 = false">Cancel</v-btn>
-                                        <v-btn flat color="primary" @click="$refs.dialog.save(time)">OK</v-btn>
-                                        </v-time-picker>
-                                    </v-dialog>
-                                </v-flex>
-                                <v-flex xs4>
-                                    <v-dialog
-                                        ref="dialog"
-                                        v-model="modal2"
-                                        :return-value.sync="time"
-                                        persistent
-                                        lazy
-                                        full-width
-                                        width="290px"
-                                    >
-                                        <v-text-field
-                                        slot="activator"
-                                        v-model="time"
-                                        label="Closing"
-                                        prepend-icon="access_time"
-                                        readonly
-                                        ></v-text-field>
-                                        <v-time-picker
-                                        v-if="modal2"
-                                        v-model="time"
-                                        full-width
-                                        >
-                                        <v-spacer></v-spacer>
-                                        <v-btn flat color="primary" @click="modal2 = false">Cancel</v-btn>
-                                        <v-btn flat color="primary" @click="$refs.dialog.save(time)">OK</v-btn>
-                                        </v-time-picker>
-                                    </v-dialog>
-                                </v-flex>
-                                </v-layout>
-                            </v-card>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
+                    
+                    <v-flex  xs6 class="mt-5">
+                        <openingHours></openingHours>
                     </v-flex>
-                    <v-flex  xs12 class="ma-2">
+                    </v-layout>
+                    <v-flex  xs12 class="ma-2 pt-4">
                      <v-btn
                         :disabled="!valid"
-                        @click="submit"
                         class="info"
                      >
                         submit
                      </v-btn>
-                     <v-btn @click="clear" class="info">Define attributes</v-btn>
+                     <v-btn  class="info">Define attributes</v-btn>
                     </v-flex>
                 </v-card>
             </v-flex>
@@ -164,9 +92,11 @@
   
 </template>
 <script>
-import adboyBotsUsersHeader from '@/components/adboyBotsUsersHeader'
+ import adboyBotsUsersHeader from '@/components/adboyBotsUsersHeader'
+ import openingHours from '@/components/openingHours'
+
  export default {
- components:{adboyBotsUsersHeader},
+ components:{adboyBotsUsersHeader,openingHours},
  data: () => ({
      
       valid: true,

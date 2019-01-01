@@ -1,297 +1,6 @@
 var mongoose = require('mongoose');
 
 var Chatbot = mongoose.model('Chatbot',{
-  templateType:{
-    type: String,
-    required:false,
-    minlength:3,
-    trim:true,
-  },
-  businessName:{
-    type: String,
-    required:true,
-    minlength:3,
-    trim:true
-  },
-  aboutUs:{
-    type: String,
-    required:false,
-    //minlength:10,
-    trim:true
-  },
-  location:[
-    {
-      fullAddress:
-      {
-        type: String,
-        required:false,
-        //minlength:3,
-        trim:true
-      },
-    city:
-      {
-        type: String,
-        required:false,
-        //minlength:3,
-        trim:true
-      },
-    state:
-      {
-        type: String,
-        required:false,
-        //minlength:3,
-        trim:true
-      },
-    zipCode:
-      {
-        type: String,
-        required:false,
-        //minlength:3,
-        trim:true
-      },
-      showFullAddress:Boolean,
-    }
-  ],
-  openingHours:[
-    {
-      dayOpen:
-      {
-        type: String,
-        required:true,
-        minlength:5,
-        trim:true
-      },
-      openingHour:
-      {
-        type: String,
-        required:true,
-        minlength:5,
-        trim:true
-      },
-      closingHour:
-      {
-        type: String,
-        required:true,
-        minlength:5,
-        trim:true
-      },
-      isOpenDay:Boolean,
-    }
-  ],
-  contactNumber:{
-    type:String,
-    required:false,
-  },
-  myCategories:[
-    {
-    displayTableCategory:Boolean,
-    categoryName:
-    {
-      type: String,
-      required:true,
-      minlength:1,
-      maxlength:40,
-      trim:true,
-    },
-    myProducts:
-    [
-      {
-        title:
-        {
-          type: String,
-          required:true,
-          minlength:1,
-          trim:true,
-        },
-        subtitle:
-        {
-          type: String,
-          required:true,
-          minlength:1,
-          trim:true,
-          unique: false,
-        },
-        image_url:
-        {
-          type: String,
-          required:false,
-          //minlength:1,
-          trim:true,
-          unique: false,
-        },
-        button:
-        {
-          title:
-          {
-            type: String,
-            required:true,
-            minlength:1,
-            trim:true,
-            unique: false,
-          },
-          url:
-          {
-            type: String,
-            required:true,
-            minlength:3,
-            trim:true,
-            unique: false,
-          }
-        },
-      myAttributes:
-      [
-        {
-          attributeType:
-          {
-            type: String,
-            required:false,
-            minlength:1,
-            maxlength:20,
-            trim:true
-          },
-          attributeValue:
-          {
-            type: String,
-            required:false,
-            minlength:1,
-            trim:true,
-            unique: false,
-          }
-        }
-      ]
-    }
-
-    ],
-    myServices:
-    [
-      {
-        title:
-        {
-          type: String,
-          required:true,
-          minlength:1,
-          trim:true,
-        },
-        subtitle:
-        {
-          type: String,
-          required:true,
-          minlength:1,
-          trim:true,
-          unique: false,
-        },
-        image_url:
-        {
-          type: String,
-          required:false,
-          //minlength:1,
-          trim:true,
-          unique: false,
-        },
-        button:
-        {
-          title:
-          {
-            type: String,
-            required:true,
-            minlength:1,
-            trim:true,
-            unique: false,
-          },
-          payload:
-          {
-            type: String,
-            required:true,
-            minlength:1,
-            trim:true,
-            unique: false,
-          }
-        },
-      }
-    ]
-  }
-  ],
-  myCustomCategories:[
-      {
-        displayTableCategory:
-        {
-            type: Boolean,
-            required:true,
-        },
-        categoryName:{
-          type: String,
-          required:false,
-          minlength:1,
-          maxlength:40,
-          trim:true,
-        },
-        myCustomItems:[
-            {
-              title:{
-                type: String,
-                required:false,
-                minlength:1,
-                maxlength:80,
-                trim:true,
-              },
-              subtitle:{
-                type: String,
-                required:false,
-                minlength:1,
-                maxlength:80,
-                trim:true,
-              },
-              image_url:{
-                type: String,
-                required:false,
-                minlength:1,
-                trim:true,
-                unique: false,
-              },
-              button:
-                {
-                  title:{
-                    type: String,
-                    required:false,
-                    minlength:1,
-                    maxlength:20,
-                    trim:true,
-                  },
-                  payload: {
-                    type: String,
-                    required:false,
-                    minlength:1,
-                    trim:true,
-                  }
-                },
-                myAttributes:[
-                  {
-                    attributeType : {
-                      type: String,
-                      required:false,
-                      minlength:1,
-                      maxlength:20,
-                      trim:true,
-                    },
-                    attributeValue : {
-                      type: String,
-                      required:false,
-                      minlength:1,
-                      trim:true,
-                    },
-                  }
-                ]
-            }
-          ]
-      }
-    ],
-  attributeName:
-  {
-    type: String,
-    required:false,
-    trim:true,
-  }
-  ,
   facebookPageId:
   {
     type: String,
@@ -307,13 +16,200 @@ var Chatbot = mongoose.model('Chatbot',{
     trim:true,
     unique: false
   },
-  emailChatbot:{
+  templateType:{
+    type: String,
+    required:false,
+    minlength:3,
+    trim:true,
+  },
+  
+  bussinesName:{
+    type: String,
+    required:true,
+    minlength:3,
+    trim:true
+  },
+  category:{
+    type: String,
+    required:true,
+    minlength:3,
+    trim:true
+  },
+  email:{
     type: String,
     required:false,
     //minlength:3,
     trim:true,
     unique: false
+  },
+  contactNumber:{
+    type:String,
+    required:false,
+  },
+  address:
+  {
+    type: String,
+    required:false,
+    //minlength:3,
+    trim:true
+  },
+  city:
+  {
+    type: String,
+    required:false,
+    //minlength:3,
+    trim:true
+  },
+  state:
+  {
+    type: String,
+    required:false,
+    //minlength:3,
+    trim:true
+  },
+  postcode:
+  {
+    type: String,
+    required:false,
+    //minlength:3,
+    trim:true
+  },
+  aboutUs:{
+    type: String,
+    required:false,
+    //minlength:10,
+    trim:true
+  },
+  openingHours:[
+    {
+      day:
+      {
+        type: String,
+        required:true,
+        minlength:5,
+        trim:true
+      },
+      openingTime:
+      {
+        type: String,
+        required:true,
+        minlength:5,
+        trim:true
+      },
+      closingTime:
+      {
+        type: String,
+        required:true,
+        minlength:5,
+        trim:true
+      },
+      dayOpen:Boolean,
+    }
+  ],
+  
+  categories:[
+    {
+      categoryName:{
+        type: String,
+        required:false,
+        //minlength:3,
+        trim:true
+      },
+      dialogDeleteCategory:Boolean,
+      panel:[Boolean],
+      buttonSelected:{
+        type: String,
+        required:false,
+        //minlength:3,
+        trim:true
+      },
+      labelCheckboxbutton:{
+        type: String,
+        required:false,
+        //minlength:3,
+        trim:true
+      },
+      sameButtonAllCategory:Boolean,
+      attrEditable:Boolean,
+      dialogConfirmDeleteAttribute:Boolean,
+      myAttributeText:{
+        type: String,
+        required:false,
+        //minlength:3,
+        trim:true
+      },
+      posAttributeOnheaders:{
+        type: String,
+        required:false,
+        //minlength:3,
+        trim:true
+      },
+      dialogAddNewAttribute:Boolean,
+      dialogChangePropertiesAttributes: Boolean,
+      buttonList:[
+        {
+          type: String,
+          required:false,
+          //minlength:3,
+          trim:true
+        }
+      ],
+      headers: [
+        { 
+          text: 
+          {
+          type: String,
+          required:false,
+          //minlength:3,
+          trim:true
+          }, 
+          value: 
+          {
+          type: String,
+          required:false,
+          //minlength:3,
+          trim:true
+          } ,
+          sortable: Boolean,
+          align:
+          {
+          type: String,
+          required:false,
+          //minlength:3,
+          trim:true
+          }
+        }
+      ],
+      myRows: [
+        {
+          title: 
+          {
+            type: String,
+            required:false,
+            //minlength:3,
+            trim:true
+          }, 
+          subtitle: 
+          {
+            type: String,
+            required:false,
+            //minlength:3,
+            trim:true
+          }, 
+          button: 
+          {
+            type: String,
+            required:false,
+            //minlength:3,
+            trim:true
+          }, 
+        }
+      ]
   }
+  ],
+
+
+  
 });
 
 module.exports ={Chatbot};

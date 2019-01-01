@@ -33,27 +33,29 @@
 
     <v-list class="pt-0" dense>
       <v-divider></v-divider>
-
+      
       <v-list-tile
         v-for="item in items"
         :key="item.title"
         class="pt-2 pb-2"
       >
      
-     
-        <v-list-tile-action>
-          <v-icon   color="#007bff">{{ item.icon }}</v-icon>
-        </v-list-tile-action>
-
-        <v-list-tile-content>
-          <v-list-tile-title  color="#007bff">{{ item.title }}</v-list-tile-title>
-        </v-list-tile-content>
-     
+        <router-link :to="item.linkTo">
+          <v-list-tile-action>
+            <v-icon   color="#007bff">{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+        </router-link>
+          <v-list-tile-content>
+            <v-list-tile-title  color="#007bff">{{ item.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        
       </v-list-tile>
+     
+
     </v-list>
     
   </v-navigation-drawer >
-  <v-toolbar  flat color="white" app >
+  <v-toolbar  flat color="white" app class="elevation-1" >
       <v-avatar
             tile="tile"
             :size="48"
@@ -71,9 +73,10 @@
         <v-btn style="color:#007bff; font-weight: 500;" flat>Privacy policy</v-btn>
         <v-btn style="color:#007bff; font-weight: 500;" flat>Terms of use</v-btn> -->
       <!-- </v-toolbar-items> -->
-      <v-toolbar-items>
+      <v-toolbar-items >
+         <v-btn flat>Link One</v-btn>
          <v-menu offset-y>
-           
+         
           <v-btn slot="activator" flat><v-icon  style="color:green;">fas fa-robot</v-icon></v-btn>
            <v-list>
             <v-list-tile
@@ -114,7 +117,14 @@
     </v-toolbar>  
 </div>
 </template>
+<style>
+a {
+  text-decoration: none;
+}
+</style>
 <script>
+  import Axios from 'axios';
+
   export default {
     data () {
       return {
@@ -122,14 +132,14 @@
        
         drawer: true,
         items: [
-          { title: 'Dashboard', icon: 'fas fa-home' },
-          { title: 'Profile', icon: 'fas fa-pen' },
-          { title: 'Ai FAQ', icon: 'fas fa-brain' },
-          { title: 'Analytics', icon: 'fas fa-chart-area' },
-          { title: 'People', icon: 'fas fa-users' },
-          { title: 'Scripts', icon: 'far fa-file-alt' },
-          { title: 'Broadcast', icon: 'fas fa-broadcast-tower' },
-          { title: 'Settings', icon: 'fas fa-cog' }
+          { title: 'Dashboard', icon: 'fas fa-home',linkTo:'/mydashboardFacebook' },
+          { title: 'Profile', icon: 'fas fa-pen',linkTo:'/profilebot' },
+          { title: 'Scripts', icon: 'far fa-file-alt',linkTo:'/scripts' },
+          { title: 'Ai FAQ', icon: 'fas fa-brain',linkTo:'/aifaq' },
+          { title: 'People', icon: 'fas fa-users',linkTo:'/mydashboardFacebook' },
+          { title: 'Broadcast', icon: 'fas fa-broadcast-tower',linkTo:'/mydashboardFacebook' },
+          { title: 'Analytics', icon: 'fas fa-chart-area',linkTo:'/mydashboardFacebook' },
+          { title: 'Settings', icon: 'fas fa-cog',linkTo:'/mydashboardFacebook' }
         ],
         chatbots:[
           {title:'Dentist in Melbourne', icon:'fas fa-robot'},
@@ -138,6 +148,21 @@
         mini: true,
         right: true,
       }
+    },
+    mounted()
+    {
+        axios.get('/user?ID=12345')
+        .then(function (response) {
+          // handle success
+          console.log(response);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
     },
     created () 
     { // would work in 'ready', 'attached', etc.

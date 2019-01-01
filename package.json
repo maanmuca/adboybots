@@ -4,7 +4,7 @@
   "description": "AdboyBots Management System",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -13,12 +13,17 @@
   "author": "Marco Munoz",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.15",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.18.7",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "material-design-icons-iconfont": "^4.0.3"

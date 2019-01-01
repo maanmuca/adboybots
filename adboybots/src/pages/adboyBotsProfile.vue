@@ -4,58 +4,62 @@
         <adboyBotsUsersHeader></adboyBotsUsersHeader>
         <v-content>
         <v-container fixed grid-list-md text-xs-center>
+            <v-toolbar dark color="primary">
+                    <v-toolbar-side-icon>
+                        <v-icon small>fas fa-pen</v-icon>
+                    </v-toolbar-side-icon>
+                    <v-toolbar-title class="white--text">Profile</v-toolbar-title>
+            </v-toolbar>
             <v-layout row wrap>
             <v-flex  xs6 >
-                <v-card light color="white" style= "height:515px;" class="pa-5" >
+                <v-card light color="white" style= "height:450px;" class="pa-5" >
                 <v-form ref="form" v-model="valid" lazy-validation>
                     <v-text-field
-                    v-model="name"
-                    :rules="nameRules"
+                    v-model="bussinesName"
                     :counter="80"
                     label="Bussiness Name"
-                    required
                     ></v-text-field>
                     <v-select
-                    v-model="select"
+                    v-model="category"
                     :items="categories"
-                    :rules="[v => !!v || 'Item is required']"
                     label="Category"
-                    required
                     ></v-select>
                     <v-text-field
                     v-model="email"
                     :rules="emailRules"
                     label="E-mail"
-                    required
                     ></v-text-field>
                     <v-text-field 
                     type="tel" 
-                    mask="(###) ### - ####" 
-                    label="Label Text">
+                     v-model="contactNumber"
+                    label="Contact Number :">
                     </v-text-field>
                      <v-text-field 
+                     v-model="address"
                     label="Adress"
-                    required
                     >
                     </v-text-field>
                 </v-form>
                 </v-card>
             </v-flex>
             <v-flex  xs6>
-                <v-card light color="white" style= "height:515px;" class="pa-5" >
+                <v-card light color="white" style= "height:450px;" class="pa-5" >
                     <v-layout>
                         <v-flex  xs4>
-                            <v-text-field   
+                            <v-text-field 
+                            v-model="city"  
                             label="City">
                             </v-text-field>   
                         </v-flex>
                         <v-flex  xs4>
                             <v-text-field 
+                            v-model="state"  
                             label="state">
                             </v-text-field>  
                         </v-flex>
                         <v-flex  xs4>
                             <v-text-field 
+                            v-model="postcode" 
                             label="Zipcode/Postcode">
                             </v-text-field>  
                         </v-flex>
@@ -64,8 +68,8 @@
                     <v-layout class="pt-3">
                     <v-flex  xs6>
                             <v-textarea
+                            v-model="aboutUs" 
                             label="About Us"
-                            value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
                             hint="Hint text"
                             ></v-textarea>
                     </v-flex>
@@ -79,74 +83,58 @@
                         :disabled="!valid"
                         class="info"
                      >
-                        submit
+                       Save Details
                      </v-btn>
-                     <v-btn  class="info">Define attributes</v-btn>
+                     <v-btn  class="info" @click="$vuetify.goTo('#myAttributes')">Define attributes</v-btn>
                     </v-flex>
                 </v-card>
             </v-flex>
+            
             </v-layout>
-        </v-container>
+           
+            <adboybotsAttributesTable id="myAttributes"></adboybotsAttributesTable>
+                    
+        </v-container >
         </v-content>
         </v-app>
   
 </template>
 <script>
+ 
  import adboyBotsUsersHeader from '@/components/adboyBotsUsersHeader'
- import openingHours from '@/components/openingHours'
+ import openingHours from '@/components/componentsProfile/openingHours.vue'
+ import adboybotsAttributesTable from '@/components/componentsProfile/adboybotsAttributesTable.vue'
 
  export default {
- components:{adboyBotsUsersHeader,openingHours},
+ components:{adboyBotsUsersHeader,openingHours,adboybotsAttributesTable},
  data: () => ({
-     
+      bussinesName:null,
+      category:null,
+      email: null,
+      contactNumber:null,
+      address:null,
+      city:null,
+      state:null,
+      postcode:null,
+      aboutUs:null,
+      myAttributes:"myAttributes",
       valid: true,
-      name: '',
       nameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 80) || 'Name must be less than 80 characters'
       ],
-      email: '',
+      
       emailRules: [
         v => !!v || 'E-mail is required',
         v => /.+@.+/.test(v) || 'E-mail must be valid'
       ],
-      select: null,
       categories: [
         'Food',
         'Sports',
         'Education',
         'Hobbie'
       ],
-      openingDays:[
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-          'Sunday'
-      ],
-      checkbox: false,
-      time: null,
-      menu2: false,
-      modal2: false,
-
-        methods: {
-        submit () {
-            if (this.$refs.form.validate()) {
-            // Native form submission is not yet supported
-            axios.post('/api/submit', {
-                name: this.name,
-                email: this.email,
-                select: this.select,
-                checkbox: this.checkbox
-            })
-            }
-        },
-        clear () {
-            this.$refs.form.reset()
-        }
-        }
+    
  })
  
 }

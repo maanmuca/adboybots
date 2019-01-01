@@ -31,16 +31,16 @@
                 <img src="@/assets/adboy-logo.png" height="150" class="mb-5" alt="">
                 <h1 class="blue--text mb-2 display-1 text-xs-center">Welcome to Adboy Bots content management system</h1>
                 <div class="subheading mb-3 text-xs-center">It is nice to meet you!</div>
-                    <router-link to="/mydashboard">
+                    <a href="https://localhost:443/auth/facebook">
                     <v-btn
                     class="darken-4 lighten-2 mt-5"
                     color="#007bff"
                     dark
                     large
                     >
-                    Login with Facebook
+                    Login
                     </v-btn>
-                    </router-link>
+                    </a>
             </v-layout>
             </v-parallax>
         </section>

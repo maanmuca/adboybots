@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt-nodejs');
 
 
 var UserSchema = new mongoose.Schema({
@@ -25,7 +26,7 @@ var UserSchema = new mongoose.Schema({
     trim:true,
   },
   isAdboyBotsAdmin:Boolean,
-  token:{
+  tokenAdboyBots:{
     type:String,
     required:false,
     trim:true,
@@ -34,7 +35,13 @@ var UserSchema = new mongoose.Schema({
     type:String,
     required:false,
     trim:true,
+  },
+  role:{
+    type:String,
+    enum:['adboyBotsAdmin','adboyBotsUser'],
+    default:'adboyBotsUser'
   }
+
 });
 
 

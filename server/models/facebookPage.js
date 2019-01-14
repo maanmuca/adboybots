@@ -13,7 +13,6 @@ var FacebookPage = mongoose.model('FacebookPage',{
     required:true,
     minlength:3,
     trim:true,
-    unique: true
   },
   name_page:{
     type: String,
@@ -30,6 +29,30 @@ var FacebookPage = mongoose.model('FacebookPage',{
   access_token_page:{
     type: String,
     required:true,
+    minlength:1,
+    trim:true
+  },
+  url_img_page:{
+    type: String,
+    required:false,
+    minlength:1,
+    trim:true
+  },
+  reachable_users:{
+    type: String,
+    required:false,
+    minlength:1,
+    trim:true
+  },
+  reachable_users_week:{
+    type: String,
+    required:false,
+    minlength:1,
+    trim:true
+  },
+  state:{
+    type: String,
+    required:false,
     minlength:1,
     trim:true
   }

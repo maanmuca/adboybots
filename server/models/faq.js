@@ -1,29 +1,11 @@
 var mongoose = require('mongoose');
 var Faq = mongoose.model('Faq',{
-            myTemplateSections:
-            [
-                {
-                    sectionName:
-                    {
-                        type: String,
-                        required:false,
-                        trim:true,
-                    }
-                }
-                
-            ],
-            tag:
+            templateName:
             {
                 type: String,
-                required:false,
-                trim:true,
-
-            },
-            faqGroupNameSelected:
-            {
-                type: String,
-                required:false,
-                trim:true
+                required:true,
+                minlength:3,
+                trim:true,  
             },
             facebookPageId:
             {
@@ -32,19 +14,34 @@ var Faq = mongoose.model('Faq',{
             minlength:3,
             trim:true,
             },
-            botName:
+            selectedFaq:
             {
                 type: String,
-                required:true,
-                minlength:3,
-                trim:true,
-                unique:true,  
+                required:false,
+                trim:true
             },
+            selectedGroup:Number,
+            myScripts:
+            [
+                
+                {
+                    type: String,
+                    required:false,
+                    trim:true,
+                }
+                
+            ],
             faqs:
             [
                 {
                     
                     faqName:
+                    {
+                        type: String,
+                        required:false,
+                        trim:true,
+                    },
+                    scriptSelected:
                     {
                         type: String,
                         required:false,
@@ -59,7 +56,9 @@ var Faq = mongoose.model('Faq',{
                                 type: String,
                                 required:false,
                                 trim:true,
-                            }
+                            },
+                            isOpen:Boolean,
+                            isModifiable:Boolean
                         }
                     ]
                         
@@ -74,37 +73,22 @@ var Faq = mongoose.model('Faq',{
                         required:false,
                         trim:true,
                     },
-                    groupSelected:Boolean,
+                    panel:[Boolean],
                     groupOfFaqs:
                     [
                         {
                             isSelected:Boolean,   
-                            displaytags:Boolean,
                             faqName:
                             {
                                 type: String,
                                 required:false,
                                 trim:true,
-                            },
-                            tags:
-                            [
-                                {
-                                    text:{
-                                        type: String,
-                                        required:false,
-                                        trim:true,
-                                    }
-                                }
-                            ],
-                            scriptSelected:
-                            {
-                                type: String,
-                                required:false,
-                                trim:true,
                             }
+                            
                         }
                     
-                    ]
+                    ],
+                    isModifiable:Boolean
                 }
             ]
         

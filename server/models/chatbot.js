@@ -11,27 +11,20 @@ var Chatbot = mongoose.model('Chatbot',{
   },
   fb_xx:{
     type: String,
-    required:true,
+    required:false,
     minlength:3,
     trim:true,
     unique: false
   },
-  templateType:{
-    type: String,
-    required:false,
-    minlength:3,
-    trim:true,
-  },
-  
   bussinesName:{
     type: String,
-    required:true,
+    required:false,
     minlength:3,
     trim:true
   },
   category:{
     type: String,
-    required:true,
+    required:false,
     minlength:3,
     trim:true
   },
@@ -115,6 +108,7 @@ var Chatbot = mongoose.model('Chatbot',{
         //minlength:3,
         trim:true
       },
+      categoryIsEditable:Boolean,
       dialogDeleteCategory:Boolean,
       panel:[Boolean],
       buttonSelected:{
@@ -181,29 +175,22 @@ var Chatbot = mongoose.model('Chatbot',{
         }
       ],
       myRows: [
-        {
-          title: 
-          {
-            type: String,
-            required:false,
-            //minlength:3,
-            trim:true
-          }, 
-          subtitle: 
-          {
-            type: String,
-            required:false,
-            //minlength:3,
-            trim:true
-          }, 
-          button: 
-          {
-            type: String,
-            required:false,
-            //minlength:3,
-            trim:true
-          }, 
-        }
+        // {
+        //   title: 
+        //   {
+        //     type: String,
+        //     required:false,
+        //     //minlength:3,
+        //     trim:true
+        //   }, 
+        //   value: 
+        //   {
+        //     type: String,
+        //     required:false,
+        //     //minlength:3,
+        //     trim:true
+        //   }
+        // }
       ]
   }
   ],

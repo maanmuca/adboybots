@@ -5,7 +5,11 @@ module.exports = {
     SERVER_URL: "https://calm-brook-89907.herokuapp.com",
     FACEBOOK_APP_ID:  "1963749690607012",
     FB_CALLBACK_URL: "/auth/facebook/callback",
-    MONGODB_URI:"mongodb://maanmuca:Artilleria666@ds123454.mlab.com:23454/adboybotsdb",
+    MONGODB_URI:"mongodb://maanmuca:Artilleria666@ds059804.mlab.com:59804/adboybotsdb",
     cookieKey:"adboybotsContentManagementSystem",
-    FB_CLIENT_TOKEN:"46c0d9cfdc1127a4378b8c68e4a21d23"
+    FB_CLIENT_TOKEN:"46c0d9cfdc1127a4378b8c68e4a21d23",
+    SECRET_JWT:"AdboyBotsWeAreTheBestChatbotPlatform",
+    AUDIENCE_JWT:"regular Users",
+    EXPIRES_IN_JWT:"365d",
+    ISSUER_JWT:"adboy.com",
 };

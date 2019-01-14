@@ -7,7 +7,7 @@ var TemplatePage = mongoose.model('TemplatePage',
       required:true,
       minlength:3,
       trim:true,
-      unique: true,
+      unique: false,
   },
   myTemplates:
     [
@@ -29,29 +29,19 @@ var TemplatePage = mongoose.model('TemplatePage',
                   minlength:1,
                   trim:true,
                 },
-            subtitleSection:
-                {
-                 type: String,
-                 required:true,
-                 minlength:1,
-                 trim:true,
-               },
-            displayOptions:
-                {
-                type: Boolean,
-                required:true,
-              },
-            sectionEditable:
+                isModifiable:
                 {
                   type: Boolean,
                   required:true,
                 },
-            preconfigured:
+                subtitleSection:
                 {
-                  type: Boolean,
-                  required:true,
+                    type: String,
+                    required:false,
+                    minlength:1,
+                    trim:true,
                 },
-            payload:
+                payload:
                 {
                   type: String,
                   required:false,
@@ -76,16 +66,6 @@ var TemplatePage = mongoose.model('TemplatePage',
                     minlength:1,
                     maxlength:640,
                     trim:true,
-                  },
-                  displayAttributesList:
-                  {
-                    type: Boolean,
-                    required:false,
-                  },
-                  displayAttributesIconList:
-                  {
-                    type: Boolean,
-                    required:false,
                   },
                   myAttribute:
                   {
@@ -129,16 +109,6 @@ var TemplatePage = mongoose.model('TemplatePage',
                         minlength:1,
                         maxlength:20,
                         trim:true,
-                      },
-                      displaySectionList:
-                      {
-                        type: Boolean,
-                        required:false,
-                      },
-                      displaySectionListIcon:
-                      {
-                        type: Boolean,
-                        required:false,
                       }
                     }
                   ],
@@ -167,22 +137,56 @@ var TemplatePage = mongoose.model('TemplatePage',
                         minlength:1,
                         maxlength:20,
                         trim:true,
-                      },
-                      displaySectionList:
-                      {
-                        type: Boolean,
-                        required:false,
-                      },
-                      displaySectionListIcon:
-                      {
-                        type: Boolean,
-                        required:false,
                       }
+                    }
+                  ],
+                  categorySelected:
+                  {
+                    type: String,
+                    required:false,
+                    minlength:1,
+                    maxlength:80,
+                    trim:true,
+                  },
+                  myFilters:[
+                    {
+                      attributeName:
+                      {
+                        type: String,
+                        required:false,
+                        minlength:1,
+                        maxlength:80,
+                        trim:true,
+                      },
+                      attributeValue:
+                      {
+                        type: String,
+                        required:false,
+                        minlength:1,
+                        maxlength:80,
+                        trim:true,
+                      },
+                      conditionFilter:
+                      {
+                        type: String,
+                        required:false,
+                        minlength:0,
+                        maxlength:20,
+                        trim:true,
+                      },
                     }
                   ],
                   elements:
                   [
                     {
+                      imageUrl:
+                      {
+                        type: String,
+                        required:false,
+                        minlength:1,
+                        maxlength:20,
+                        trim:true,
+                      },
                       title:
                       {
                         type: String,
@@ -226,7 +230,7 @@ var TemplatePage = mongoose.model('TemplatePage',
                             trim:true,
                           },
                         }
-                      ]
+                      ], 
                     }
                   ]
                 }
@@ -235,23 +239,14 @@ var TemplatePage = mongoose.model('TemplatePage',
         ]
       }
     ],
-    mySection:
-    {
-        type: String,
-        required:true,
-        minlength:1,
-        maxlength:80,
-        trim:true,
-        unique:false
-    },
-    myRedirectSection:
-    {
-      type: String,
-      required:false,
-      minlength:1,
-      maxlength:20,
-      trim:true
-    }
+  templateSelected:
+  {
+    type: String,
+    required:false,
+    minlength:1,
+    maxlength:80,
+    trim:true,
+  }
 });
 
 
